@@ -3,22 +3,6 @@
 console.log('Redy to go');
 
 
-
-let preload = () => {
-
-};
-
-let create = () => {
-
-    const x = 200;
-    const y = 200;
-    const width = 100;
-    const height = 100;
-    const cellwith = 10;
-    const cellheight = 10;
-    let grid = this.addEventListener.grid(x, y,width,height,cellwith, cellheight, 0xff0000);
-};
-
 let config = {
     type: Phaser.AUTO,
     with: 800,
@@ -30,3 +14,35 @@ let config = {
 }
 
 let game = new Phaser.Game(config);
+
+function preload() {
+
+    this.load.image('player', 'star.png');
+
+};
+
+function create() {
+    var base = this.add.grid(400, 300, 800, 600, 32, 32, 0x00b9f2).setAltFillStyle(0x016fce).setOutlineStyle();
+
+    let player = this.add.image(32+16,32+16, 'player');
+
+    this.input.keyboard.on('keydown-D', function (event) {
+
+        player.x += 32;
+
+        // var tile = layer.getTileAtWorldXY(player.x + 32, player.y, true);
+
+        // if (tile.index === 2)
+        // {
+        //     //  Blocked, we can't move
+        // }
+        // else
+        // {
+        //     player.x += 32;
+        //     player.angle = 180;
+        // }
+
+    });
+};
+
+
